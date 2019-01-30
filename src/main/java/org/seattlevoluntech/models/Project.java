@@ -1,12 +1,15 @@
 package org.seattlevoluntech.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+
+@Entity(name = "projects")
 @Table(name="projects")
-public class Projects implements Serializable {
+public class Project implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -19,6 +22,7 @@ public class Projects implements Serializable {
     private String businessName;
     @Column(name = "business_description")
     private String businessDescription;
+    @CreationTimestamp
     @Column(name = "creation_date")
     private Date creationDate;
     @Column(name = "status")
