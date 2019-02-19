@@ -1,0 +1,119 @@
+@import '../../../style/variables.scss';
+
+.profile {
+  padding-top: 0px;
+  flex-flow: row wrap;
+}
+
+.profile-info {
+  width: 100%;
+  background-color: $color-accent;
+}
+
+.profile-container {
+  width: 80%;
+  flex-flow: row wrap;
+  min-height: 200px;
+  padding: 40px 0 0 0;
+}
+
+.profile-container > button:nth-of-type(1) {
+  margin: 0 0 5px 0;
+  width: 70px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.profile-details {
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: $color-primary;
+  padding: 30px;
+}
+
+.profile-details div {
+  //border: 1px solid $color-octonary;
+  //border-radius: 5px;
+  padding: 10px;
+}
+
+.profile-business-details, .profile-volunteer-details {
+  flex-grow: 1;
+  max-width: 40%;
+  word-wrap: break-word;
+}
+
+.profile-business-details > div, .profile-business-desc > div,
+.profile-volunteer-details > div, .profile-volunteer-bio > div {
+  border-width: 1px;
+  border-color: $color-accent;
+  border-style: solid;
+}
+
+.profile-business-desc, .profile-volunteer-bio {
+  flex-grow: 2;
+  max-width: 50%;
+  word-wrap: break-word;
+}
+
+.profile-business-desc > div {
+  height: auto;
+}
+
+.profile-projects {
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.profile-container h2 {
+  padding: 10px 0 0 0;
+  color: $color-primary;
+}
+
+.profile-buttons {
+  justify-content: space-around;
+}
+
+.profile-container button {
+  margin: 50px 10px 50px auto;
+  border: none;
+  background-color: $color-quaternary;
+  color: $color-primary;
+  font-size: 15px;
+  min-width: auto;
+  min-height: auto;
+  white-space: nowrap;
+}
+
+.profile-container button:hover {
+  background-color: #0FACF3;
+}
+
+.open-projects, .closed-projects, .current-projects {
+  flex-flow: row wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.open-projects > h2, .current-projects > h2 {
+  margin: 50px 0 55px 0;
+  width: 100%;
+}
+
+.closed-projects {
+  margin: 0 0 20px 0;
+}
+
+.closed-projects > h2  {
+  margin: 50px 0 55px 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 700px){
+  .profile-details > * {
+    max-width: 100%;
+  }
+
+  .profile-buttons {
+    flex-wrap: wrap;
+  }
+}

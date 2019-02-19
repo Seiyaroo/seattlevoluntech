@@ -7,10 +7,6 @@ Link a {
   color: $color-primary;
 }
 
-p {
-  color: $color-primary;
-}
-
 .formHeader {
   color: $color-secondary;
   margin-top: 40px;
@@ -23,45 +19,41 @@ p {
   font-weight: bold;
 }
 
-.business {
+.intro-body button {
+  background-color: $color-primary;
+}
+
+.business, .volunteer {
   width: 40%;
   margin: 50px 0 0 0;
   text-align: center;
   animation: fade-in 2s linear;
-}
-
-.signup-business {
-  background-color: #0052c8;
-  font-weight: bold;
-}
-
-button {
-  width: 150px;
-  height: 40px;
-  color: $color-primary;
-  border-radius: 10px;
-}
-
-.volunteer {
-  width: 40%;
-  margin: 50px 0 0 0;
-  text-align: center;
-  animation: fade-in 2s linear;
-}
-
-.volunteer p, .business p {
   color: $color-denary;
 }
 
-.signup-volunteer {
-  background-color: $color-secondary;
-  font-weight: bold;
+#signup-business {
+  color: #0052c8;
+  font-size: 14px;
 }
 
-.business p, .volunteer p {
+#signup-business:hover {
+  box-shadow: 0px 1px 15px 2px #0052c8;
+}
+
+#signup-volunteer {
+  color: $color-secondary;
+  font-size: 14px;
+}
+
+#signup-volunteer:hover {
+  box-shadow: 0px 1px 15px 2px $color-secondary;
+}
+
+.business > p, .volunteer > p {
   width: 60%;
   margin-left: 20%;
   margin-right: auto;
+  color: $color-denary;
 }
 
 @keyframes fade-in {
@@ -76,9 +68,9 @@ button {
 }
 
 .main-details {
-  background: url('../../../assets/fistbump.jpg') no-repeat content-box;
+  background: url('../../../assets/fistbump.jpg') no-repeat content-box center;
   background-size: cover;
-  height: 450px;
+  height: 530px;
   display: flex;
   justify-content: center;
   margin: 50px 0 0 0;
@@ -90,9 +82,10 @@ button {
   text-align: center;
   display: flex;
   justify-content: center;
-  margin: 95px 0 0 0;
-  background: rgba(0, 0, 0, 0.5);
+  margin: 85px 0 0 0;
+  background: rgba(0, 0, 0, 0.6);
   flex-wrap: wrap;
+  padding: 20px 0 20px 0;
 }
 
 .about-container p {
@@ -105,6 +98,89 @@ button {
   line-height: 25px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 600px){
+//Mobile
+@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: portrait) {
+  .intro-body {
+    flex-wrap: wrap;
+  }
+  .business, .volunteer {
+    margin: 25px 0 0 0;
+    width: 90%;
+  }
 
+  .business > p, .volunteer > p {
+    font-size: 14px;
+  }
+
+  .business > h2, .volunteer > h2 {
+    font-size: 20px;
+    margin: 10px 0 10px 0;
+  }
+
+  .intro-body button {
+    width: 90%;
+  }
+
+  .vertical-line {
+    border-bottom: 4px solid $color-quaternary;
+    border-left: 0;
+    height: 10px;
+    width: 50%;
+    margin: 50px 0 40px 0;
+  }
+
+  .main-details {
+    margin: 25px 0 0 0;
+    height: 600px;
+  }
+
+  .about-container {
+    margin: 20px 0 0 0;
+    width: 75%;
+    height: 80%;
+    padding: 10px 0 10px 0;
+  }
+
+  .about-container p {
+    font-size: 14px;
+  }
+}
+
+//Mobile Landscape
+@media only screen and (min-width: 320px) and (max-width: 700px) and (orientation: landscape) {
+  .business, .volunteer {
+    margin: 15px 0 0 0;
+    width: 50%;
+  }
+
+  .main-details {
+    margin: 20px 0 0 0;
+    height: 600px;
+  }
+
+  .about-container {
+    margin: 20px 0 0 0;
+    height: 80%;
+    padding: 10px 0 10px 0;
+  }
+}
+
+//Tablet
+@media only screen and (min-width: 701px) and (max-width: 900px){
+  .business, .volunteer {
+    margin: 40px 0 0 0;
+    width: 50%;
+  }
+
+  .main-details {
+    margin: 40px 0 0 0;
+    height: 600px;
+  }
+
+  .about-container {
+    margin: 20px 0 0 0;
+    width: 75%;
+    height: 80%;
+    padding: 10px 0 10px 0;
+  }
 }

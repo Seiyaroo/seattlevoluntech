@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import ProjectPane from './project-pane';
-import NavUi from '../nav-ui/nav-ui';
 
 import './open-projects.scss';
+import ProjectCard from "../landing/latest-projects";
 
 class Projects extends React.Component {
   constructor(props) {
@@ -22,9 +22,6 @@ class Projects extends React.Component {
     const { location } = this.props;
     return (
       <Fragment>
-        <section>
-          <NavUi location={location} />
-        </section>
         <section>
           {this.projectsList()}
         </section>

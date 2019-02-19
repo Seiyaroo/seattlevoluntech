@@ -1,16 +1,29 @@
-import React, { Fragments } from 'react';
-import NavUi from '../nav-ui/nav-ui';
-import ProjectEditing from './project-editing';
+// packages
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+// Redux actions
+import { fetchProjectDetails } from '../../actions/project-details-actions';
+
+// components
+//import ProjectEditing from './project-editing';
 import ProjectInfo from './project-info';
-import { Link } from 'react-router-dom';
+import * as routes from '../../routes';
+
+// styling
+import './project-details.scss';
 
 class ProjectDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isEditing: false,
-
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchProjectDetails();
   }
 
   handleClick() {
@@ -20,27 +33,53 @@ class ProjectDetails extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { error, loading, projectDetails } = this.props.projectDetails;
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
     return (
-      <Fragments>
-        <section>
-          <NavUi location={location} />
-        </section>
-        <section>
-          {this.props.isBusiness 
-            ? <span onClick={this.handleClick} className="editLink">edit</span> 
-            : null 
+      <Fragment>
+        <section className='project-details flex'>
+          {this.props.isBusiness
+            ? <ProjectInfo isBusiness={true} handleSignUp={this.handleSignUp}
+            projectDetails={projectDetails}/>
+            : <ProjectInfo isVolunteer={true} handleSignUp={this.handleSignUp}
+          projectDetails={projectDetails}/>
           }
-          {this.state.isEditing && this.props.isBusiness 
-            ? <ProjectEditing handleClick={this.handleClick}/>
-            : <ProjectInfo />
+          {this.props.isVolunteer
+            ? <ProjectInfo isVolunteer={true} handleSignUp={this.handleSignUp}
+            projectDetails={projectDetails}/>
+            : null
           }
-          {/* Button on click needs functionality - must make some kind of POST request */}
-          {this.props.isVolunteer ? <Link to='/thank-you'><button >I want to work on this!</button></Link> : null}
         </section>
-      </Fragments>
+      </Fragment>
     );
   }
 }
 
-export default ProjectDetails;
+ProjectDetails.propTypes = {
+  projectDetails: PropTypes.object,
+  projectId: PropTypes.string,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+  fetchProjectDetails: PropTypes.func,
+};
+
+const mapStateToProps = (state, ownProps) => ({
+  projectId: ownProps.match.params.id,
+  projectDetails: state.projectDetails,
+  loading: state.loading,
+  error: state.error,
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchProjectDetails: () => dispatch(fetchProjectDetails(ownProps.match.params.id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetails);
